@@ -244,6 +244,7 @@ collision_layer = 2
 collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_ffq0m")
+distance = 0.0
 projectile_scene = ExtResource("2_yhlrh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1865971466]
@@ -261,7 +262,7 @@ shape = SubResource("CapsuleShape2D_3vyb7")
 [node name="Timer" type="Timer" parent="." unique_id=2084913349]
 unique_name_in_owner = true
 process_callback = 0
-wait_time = 5.0
+wait_time = 2.8699999999999997
 
 [node name="ProjectileMarker" type="Marker2D" parent="." unique_id=60650531]
 unique_name_in_owner = true

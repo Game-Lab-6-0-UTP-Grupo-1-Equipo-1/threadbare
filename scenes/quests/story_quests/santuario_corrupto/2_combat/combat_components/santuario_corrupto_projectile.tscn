@@ -11,8 +11,9 @@ bounce = 1.0
 size = Vector2(44, 44)
 
 [node name="SantuarioCorruptoProjectile" type="RigidBody2D" unique_id=1611529190 groups=["projectiles"]]
+self_modulate = Color(0.25025207, 0.49163353, 0.70743555, 1)
 collision_layer = 256
-collision_mask = 80
+collision_mask = 81
 mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_dwrrk")
 gravity_scale = 0.0
@@ -33,6 +34,7 @@ position = Vector2(-3, 0)
 unique_name_in_owner = true
 sprite_frames = ExtResource("2_0a1ix")
 autoplay = "default"
+frame_progress = 0.6670341
 
 [node name="TrailFXMarker" type="Marker2D" parent="VisibleThings" unique_id=771420475]
 unique_name_in_owner = true

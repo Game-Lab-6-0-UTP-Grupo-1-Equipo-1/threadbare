@@ -21,6 +21,7 @@ extends Node
 ## Emited when [member barrels_completed] reaches [member barrels_to_win].
 signal goal_reached
 
+@export_file("*.tscn") var next_scene: String = ""
 ## How many barrels to complete for winning.
 @export var barrels_to_win: int = 1
 
@@ -28,25 +29,59 @@ signal goal_reached
 ## If false, make sure to call [method start].
 @export var autostart: bool = false
 
+#Para el timer:
+@onready var timer: Timer = $Timer
+
+@onready var label=$Label
+
+# Called when the node enters the scene tree for the first time.
+
+func temporizador():
+	var time_left = timer.time_left
+	var minuto=floor(time_left/60)
+	var segundo =int (time_left)%60
+	return [minuto, segundo]
+
+func reset_and_start() -> void:
+	barrels_completed = 0
+	timer.stop()
+	start()  # Esto reinicia el timer y los enemigos
+	
 ## Counter for the completed barrels.
 var barrels_completed: int = 0
 
-
-## Update the allowed labels/colors and tell enemies to start.
-func start() -> void:
-	_update_allowed_colors()
-	get_tree().call_group("throwing_enemy", "start")
-
-
-func _ready() -> void:
+func _ready() -> void:	
+	DamageManager.game_started.connect(_on_game_started)
 	var filling_barrels: Array = get_tree().get_nodes_in_group("filling_barrels")
 	barrels_to_win = clampi(barrels_to_win, 0, filling_barrels.size())
 	for barrel: FillingBarrel in filling_barrels:
 		barrel.completed.connect(_on_barrel_completed)
+	timer.timeout.connect(_on_timer_timeout)
+	
 	if autostart:
 		start()
+		
 
+## Update the allowed labels/colors and tell enemies to start.
+func start() -> void:
+	DamageManager.game_started.connect(_on_game_started)	
+	_update_allowed_colors()  
+	get_tree().call_group("throwing_enemy", "start")
+	label.visible=true
+	timer.start()   #comienza el temporizador
 
+func _on_game_started() -> void:
+	start()
+#actualizacion del label que contiene el temporizador
+func _process(delta):
+	if label and timer:
+		label.text = "%02d:%02d" % temporizador()
+	
+
+func _on_timer_timeout	() -> void:
+	get_tree().call_group("throwing_enemy", "remove")
+	get_tree().call_group("projectiles", "remove")
+	
 func _update_allowed_colors() -> void:
 	var allowed_labels: Array[String] = []
 	var color_per_label: Dictionary[String, Color]
@@ -71,3 +106,8 @@ func _on_barrel_completed() -> void:
 	get_tree().call_group("throwing_enemy", "remove")
 	get_tree().call_group("projectiles", "remove")
 	goal_reached.emit()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		SceneSwitcher.change_to_file_with_transition(next_scene)

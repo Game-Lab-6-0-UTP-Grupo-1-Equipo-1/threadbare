@@ -3,13 +3,14 @@
 @tool
 class_name CollectibleItem extends Node2D
 
-## Overworld collectible that can be interacted with. When a player interacts
+## Overworld collectible that can be int	eracted with. When a player interacts
 ## with it, an [InventoryItem] is added to the [Inventory]
 
 ## Wether the collectible can be seen or collected. This allows the collectible
 ## to be placed in the scene even when some condition has to be met for it to
 ## appear.
-@export var revealed: bool = true:
+var faltantes:int
+@export var revealed: bool = false:
 	set(new_value):
 		revealed = new_value
 		_update_based_on_revealed()
@@ -73,14 +74,21 @@ func _ready() -> void:
 		return
 
 	interact_area.interaction_started.connect(self._on_interacted)
+	if not revealed:
+		# Conectar la señal del GameManager
+		GameManager.meta_alcanzada.connect(_on_meta_alcanzada)
 
-
+func _on_meta_alcanzada() -> void:
+	# Revelar el objeto cuando se alcance la meta
+	if not revealed:
+		reveal()
 ## Make the collectible appear
 func reveal() -> void:
 	revealed = true
 	appear_sound.play()
 	animation_player.play("reveal")
 	await animation_player.animation_finished
+
 
 
 ## When interacted with, the collectible will display a brief animation
@@ -91,7 +99,7 @@ func _on_interacted(player: Player, _from_right: bool) -> void:
 	animation_player.play("collected")
 	await animation_player.animation_finished
 
-	GameState.add_collected_item(item)
+	#GameState.add_collected_item(item)
 
 	if collected_dialogue:
 		DialogueManager.show_dialogue_balloon(collected_dialogue, dialogue_title, [self, player])
@@ -101,8 +109,13 @@ func _on_interacted(player: Player, _from_right: bool) -> void:
 	queue_free()
 
 	if next_scene:
-		GameState.set_challenge_start_scene(next_scene)
-		SceneSwitcher.change_to_file_with_transition(next_scene)
+		# Solo cambiar de escena si se han recolectado suficientes naranjas
+		if GameManager.naranjas_recolectadas == GameManager.naranjas_necesarias:
+			GameState.set_challenge_start_scene(next_scene)
+			SceneSwitcher.change_to_file_with_transition(next_scene)
+		else:
+			faltantes = GameManager.naranjas_necesarias - GameManager.naranjas_recolectadas
+			print("Faltan ", faltantes, " naranjas para poder usar este objeto.")
 
 
 func _update_based_on_revealed() -> void:

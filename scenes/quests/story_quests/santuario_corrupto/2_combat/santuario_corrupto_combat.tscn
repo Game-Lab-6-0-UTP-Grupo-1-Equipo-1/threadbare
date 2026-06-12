@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://nghedn0xdyul"]
 
 [ext_resource type="Script" uid="uid://pk3ucq7e2eah" path="res://scenes/game_logic/player_mode.gd" id="1_24xpn"]
+[ext_resource type="Script" uid="uid://b26u4ijdd2qln" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/santuario_corrupto_combat.gd" id="1_xux7a"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="2_oh3j7"]
 [ext_resource type="Resource" uid="uid://bgti37yhbmope" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/santuario_corrupto_combat.dialogue" id="3_xux7a"]
 [ext_resource type="Script" uid="uid://cp54mgi54nywo" path="res://scenes/game_logic/fill_game_logic.gd" id="4_0le5k"]
@@ -18,6 +19,13 @@
 [ext_resource type="Script" uid="uid://bgmwplmj3bfls" path="res://scenes/globals/game_state/inventory/inventory_item.gd" id="16_hchck"]
 [ext_resource type="PackedScene" uid="uid://dmevaymmt6wco" path="res://scenes/game_elements/props/powerup/powerup.tscn" id="17_4ybr8"]
 [ext_resource type="PackedScene" uid="uid://cfcgrfvtn04yp" path="res://scenes/ui_elements/hud/hud.tscn" id="18_nlmok"]
+[ext_resource type="FontFile" uid="uid://b3ti4mqhfjx2j" path="res://scenes/quests/story_quests/santuario_corrupto/1_stealth/nuevos_agregados/font_type/OTF/dogicapixel.otf" id="20_0le5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xux7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xux7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0le5k"]
 
 [sub_resource type="Resource" id="Resource_bawwo"]
 script = ExtResource("16_hchck")
@@ -26,6 +34,15 @@ metadata/_custom_type_script = "uid://bgmwplmj3bfls"
 
 [node name="SantuarioCorruptoCombat" type="Node2D" unique_id=1610054737]
 y_sort_enabled = true
+script = ExtResource("1_xux7a")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=945341749]
+position = Vector2(2335, 955)
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=163244909]
+position = Vector2(-295.19998, -130.19998)
+shape = SubResource("CircleShape2D_xux7a")
 
 [node name="PlayerMode" type="Node" parent="." unique_id=969358735]
 script = ExtResource("1_24xpn")
@@ -39,7 +56,28 @@ metadata/_custom_type_script = "uid://x1mxt6bmei2o"
 
 [node name="FillGameLogic" type="Node" parent="." unique_id=1828019770]
 script = ExtResource("4_0le5k")
+next_scene = "uid://cja8ndt5fhe3s"
 metadata/_custom_type_script = "uid://cp54mgi54nywo"
+
+[node name="Timer" type="Timer" parent="FillGameLogic" unique_id=465916117]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="FillGameLogic" unique_id=1659524716]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -544.0
+offset_top = 13.999999
+offset_right = -502.59998
+offset_bottom = 35.000015
+grow_horizontal = 2
+scale = Vector2(5, 5)
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("20_0le5k")
+theme_override_font_sizes/font_size = 15
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=738016104]
 
@@ -63,50 +101,53 @@ position = Vector2(348, 335)
 sprite_frames = ExtResource("9_lv4ns")
 
 [node name="ThrowingNPC" parent="OnTheGround" unique_id=2065424633 instance=ExtResource("10_3kpwj")]
-position = Vector2(857, 300)
+position = Vector2(779, 233)
+distance = 6.0
+throwing_period = 0.7
 sprite_frames = ExtResource("11_wptir")
 projectile_scene = ExtResource("12_vxqfc")
+projectile_speed = 45.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OnTheGround/ThrowingNPC" unique_id=1399319807]
+position = Vector2(-0.9999995, -37.999996)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_xux7a")
+
+[node name="ThrowingNPC3" parent="OnTheGround" unique_id=1243855514 instance=ExtResource("10_3kpwj")]
+position = Vector2(753, 323)
+distance = 6.0
+throwing_period = 0.7
+sprite_frames = ExtResource("11_wptir")
+projectile_scene = ExtResource("12_vxqfc")
+projectile_speed = 45.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OnTheGround/ThrowingNPC3" unique_id=561082781]
+position = Vector2(-4.999998, -35.999992)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_xux7a")
+
+[node name="ThrowingNPC2" parent="OnTheGround" unique_id=1288577308 instance=ExtResource("10_3kpwj")]
+position = Vector2(763, 432)
+distance = 11.0
+sprite_frames = ExtResource("11_wptir")
+projectile_scene = ExtResource("12_vxqfc")
+projectile_duration = 2.3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OnTheGround/ThrowingNPC2" unique_id=1130016191]
+position = Vector2(1.9999999, -25.999998)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_0le5k")
 
 [node name="Target" parent="OnTheGround" unique_id=1718603548 instance=ExtResource("13_r2hmw")]
-position = Vector2(502, 164)
-sprite_frames = ExtResource("14_j2ppa")
-label = ""
-color = Color(1, 1, 1, 1)
-
-[node name="Target2" parent="OnTheGround" unique_id=711725062 instance=ExtResource("13_r2hmw")]
-position = Vector2(758, 164)
-sprite_frames = ExtResource("14_j2ppa")
-label = ""
-color = Color(1, 1, 1, 1)
-
-[node name="Target3" parent="OnTheGround" unique_id=1832726000 instance=ExtResource("13_r2hmw")]
-position = Vector2(761, 497)
-sprite_frames = ExtResource("14_j2ppa")
-label = ""
-color = Color(1, 1, 1, 1)
-
-[node name="Target4" parent="OnTheGround" unique_id=857122250 instance=ExtResource("13_r2hmw")]
-position = Vector2(632, 497)
-sprite_frames = ExtResource("14_j2ppa")
-label = ""
-color = Color(1, 1, 1, 1)
-
-[node name="Target5" parent="OnTheGround" unique_id=1348280126 instance=ExtResource("13_r2hmw")]
-position = Vector2(633, 164)
-sprite_frames = ExtResource("14_j2ppa")
-label = ""
-color = Color(1, 1, 1, 1)
-
-[node name="Target6" parent="OnTheGround" unique_id=1005497940 instance=ExtResource("13_r2hmw")]
-position = Vector2(501, 497)
+visible = false
+position = Vector2(17, 122)
 sprite_frames = ExtResource("14_j2ppa")
 label = ""
 color = Color(1, 1, 1, 1)
 
 [node name="CollectibleItem" parent="OnTheGround" unique_id=1864193206 instance=ExtResource("15_q4005")]
 unique_name_in_owner = true
-position = Vector2(868, 303)
-revealed = false
+position = Vector2(882, 299)
 next_scene = "uid://cja8ndt5fhe3s"
 item = SubResource("Resource_bawwo")
 collected_dialogue = ExtResource("3_xux7a")
@@ -129,5 +170,9 @@ limit_bottom = 640
 position_smoothing_enabled = true
 editor_draw_limits = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=455547207]
+
+[connection signal="body_entered" from="Area2D" to="FillGameLogic" method="_on_area_2d_body_entered"]
 [connection signal="cinematic_finished" from="Cinematic" to="FillGameLogic" method="start"]
 [connection signal="goal_reached" from="FillGameLogic" to="OnTheGround/CollectibleItem" method="reveal"]
+[connection signal="timeout" from="FillGameLogic/Timer" to="FillGameLogic" method="_on_timer_timeout"]
