@@ -100,7 +100,7 @@ func _set_can_hit_enemy(new_can_hit_enemy: bool) -> void:
 	set_collision_mask_value(Enums.CollisionLayers.ENEMIES_HITBOX, can_hit_enemy)
 
 
-func _ready() -> void:
+func _ready() -> void: 	
 	if trail_fx_scene:
 		_trail_particles = trail_fx_scene.instantiate()
 		trail_fx_marker.add_child(_trail_particles)

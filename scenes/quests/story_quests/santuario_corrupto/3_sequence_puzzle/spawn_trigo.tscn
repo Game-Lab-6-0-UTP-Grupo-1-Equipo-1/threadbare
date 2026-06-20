@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dk6nkirghpkxn"]
+
+[ext_resource type="Script" uid="uid://b06m5u5044j0q" path="res://spawn_trigo.gd" id="1_wmuje"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmuje"]
+
+[node name="SpawnTrigo" type="Area2D" unique_id=298352701]
+script = ExtResource("1_wmuje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=662433207]
+shape = SubResource("RectangleShape2D_wmuje")
+
+[node name="Timer" type="Timer" parent="." unique_id=1723441306]
+wait_time = 1.1139999999999999
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

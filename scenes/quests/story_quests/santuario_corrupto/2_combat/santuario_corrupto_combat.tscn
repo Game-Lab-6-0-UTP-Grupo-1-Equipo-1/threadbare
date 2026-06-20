@@ -65,7 +65,6 @@ one_shot = true
 autostart = true
 
 [node name="Label" type="Label" parent="FillGameLogic" unique_id=1659524716]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

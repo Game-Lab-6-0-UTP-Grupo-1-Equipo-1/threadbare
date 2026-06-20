@@ -35,3 +35,7 @@ func set_mode(new_mode: Mode) -> void:
 
 func _ready() -> void:
 	set_mode(mode)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

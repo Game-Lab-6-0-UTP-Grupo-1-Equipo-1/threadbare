@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dg6lb7j51kvbe"]
+
+[ext_resource type="Script" uid="uid://jllabtpjc46i" path="res://scenes/game_elements/props/decoration/animated_decoration.gd" id="1_kx3v8"]
+[ext_resource type="SpriteFrames" uid="uid://cql0h6utsuuar" path="res://scenes/game_elements/props/decoration/crops/components/barley_spriteframes.tres" id="2_hmc6y"]
+[ext_resource type="Script" uid="uid://cms2wqtbxjl1h" path="res://scenes/game_logic/sprite_behaviors/random_frame_sprite_behavior.gd" id="3_qjcuo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xsg82"]
+radius = 19.0
+height = 56.0
+
+[node name="Trigo" type="Area2D" unique_id=599442476]
+script = ExtResource("1_kx3v8")
+factor_ralentizacion = 0.5
+duracion_ralentizacion = 2.0
+tiempo_autoeliminar = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525148307]
+position = Vector2(-1, -16)
+shape = SubResource("CapsuleShape2D_xsg82")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1119362833]
+unique_name_in_owner = true
+position = Vector2(0, -20)
+sprite_frames = ExtResource("2_hmc6y")
+autoplay = "default"
+
+[node name="RandomFrameSpriteBehavior" type="Node2D" parent="AnimatedSprite2D" unique_id=270409132 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_qjcuo")
+sprite = NodePath("..")
+metadata/_custom_type_script = "uid://cms2wqtbxjl1h"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
