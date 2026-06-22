@@ -100,7 +100,7 @@ func _set_can_hit_enemy(new_can_hit_enemy: bool) -> void:
 	set_collision_mask_value(Enums.CollisionLayers.ENEMIES_HITBOX, can_hit_enemy)
 
 
-func _ready() -> void:
+func _ready() -> void: 	
 	if trail_fx_scene:
 		_trail_particles = trail_fx_scene.instantiate()
 		trail_fx_marker.add_child(_trail_particles)
@@ -111,6 +111,7 @@ func _ready() -> void:
 	duration_timer.start()
 	var impulse: Vector2 = direction * speed
 	apply_impulse(impulse)
+	body_entered.connect(_on_body_entered)
 
 
 func _process(_delta: float) -> void:
@@ -133,11 +134,13 @@ func add_small_fx() -> void:
 	get_tree().current_scene.add_child(small_fx)
 	small_fx.global_position = global_position
 
-
+#Impactos del proyectil al jugador
 func _on_body_entered(body: Node2D) -> void:
-	add_small_fx()
-	duration_timer.start()
-
+	var player_node = body if body.is_in_group("player") else body.owner if body.owner and body.owner.is_in_group("player") else null
+	if player_node and can_hit_player:
+		DamageManager.registrar_impacto()
+		queue_free()
+		return
 	# Logic for Fragile Barrel
 	# We must check for the specific subclass first because it inherits from FillingBarrel
 	if body.owner is FragileBarrel:
