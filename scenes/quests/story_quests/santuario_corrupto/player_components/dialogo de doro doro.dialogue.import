@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b0p6fwdflqoas"
+path="res://.godot/imported/dialogo de doro doro.dialogue-b27470386395cf6d152329b5892f38a7.tres"
+
+[deps]
+
+source_file="res://scenes/quests/story_quests/santuario_corrupto/player_components/dialogo de doro doro.dialogue"
+dest_files=["res://.godot/imported/dialogo de doro doro.dialogue-b27470386395cf6d152329b5892f38a7.tres"]
+
+[params]
+
+defaults=true
