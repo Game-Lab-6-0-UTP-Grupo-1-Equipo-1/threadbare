@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var escena_trigo = load("res://scenes/quests/story_quests/santuario_corrupto/3_sequence_puzzle/trigo.tscn")
-@onready var marker = $"../Player/Marker"  
+@onready var marker = $"../Player/Marker"
 @export_file("*.tscn") var next_scene: String = ""
 var bool_spawn = true
 var random = RandomNumberGenerator.new()
