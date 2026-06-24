@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_5s136"]
 [ext_resource type="Texture2D" uid="uid://def3f4migi3fu" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto tilest/Top-Down Trees/Trees_texture_shadow_dark/Fruit_tree1.png" id="12_qp82b"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_yxnnc"]
+[ext_resource type="Script" uid="uid://cwmohyfy3lkr1" path="res://scenes/quests/story_quests/santuario_corrupto/0_intro/area_2d.gd" id="13_6h5vr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvj5c"]
 size = Vector2(844.6499, 332.99994)
@@ -48,6 +49,9 @@ size = Vector2(42.77813, 55.477905)
 
 [sub_resource type="Resource" id="Resource_wqh38"]
 script = ExtResource("12_yxnnc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_adf1s"]
+radius = 17.713278
 
 [node name="SantuarioCorruptoIntro" type="Node2D" unique_id=2049284984]
 
@@ -938,3 +942,14 @@ follow_mode = 2
 follow_target = NodePath("../OnTheGround/Player")
 zoom = Vector2(1.5, 1.5)
 tween_resource = SubResource("Resource_wqh38")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=913479513]
+position = Vector2(2367, 947)
+script = ExtResource("13_6h5vr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2017799026]
+position = Vector2(-879.00006, -481.99997)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_adf1s")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

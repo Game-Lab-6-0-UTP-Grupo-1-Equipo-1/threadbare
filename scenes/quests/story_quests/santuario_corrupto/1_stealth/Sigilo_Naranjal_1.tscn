@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bxxe7vnnxnaq0"]
+[gd_scene format=4 uid="uid://diphqjmedsq25"]
 
 [ext_resource type="Script" uid="uid://dnp0tjloec2d7" path="res://scenes/game_logic/stealth_game_logic.gd" id="1_62gfp"]
 [ext_resource type="TileSet" uid="uid://b282nrrbtkhvk" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto_exterior_floors.tres" id="2_bh13k"]
@@ -7,15 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://iu2q66clupc6" path="res://scenes/game_elements/characters/player/player.tscn" id="5_miw66"]
 [ext_resource type="SpriteFrames" uid="uid://b8r8lq0r27m46" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/santuario_corrupto_player.tres" id="6_bo1fh"]
 [ext_resource type="PackedScene" uid="uid://d37mebu7atru7" path="res://scenes/game_elements/characters/enemies/guard/guard.tscn" id="7_hgeay"]
-[ext_resource type="SpriteFrames" uid="uid://dtmyh7ggta0d6" path="res://scenes/quests/story_quests/santuario_corrupto/1_stealth/stealth_components/santuario_corrupto_guard_enemy.tres" id="8_fjfh1"]
 [ext_resource type="PackedScene" uid="uid://dua6mynlw2ptw" path="res://scenes/game_elements/props/checkpoint/checkpoint.tscn" id="9_81jk6"]
-[ext_resource type="Resource" uid="uid://tutnjauis3ju" path="res://scenes/quests/story_quests/santuario_corrupto/1_stealth/stealth_components/santuario_corrupto_checkpoint.dialogue" id="10_p1jws"]
 [ext_resource type="PackedScene" uid="uid://cfcgrfvtn04yp" path="res://scenes/ui_elements/hud/hud.tscn" id="11_k3x5l"]
 [ext_resource type="PackedScene" uid="uid://fuhl3l6gxq5k" path="res://scenes/game_elements/props/collectible_item/collectible_item.tscn" id="12_1ni6e"]
 [ext_resource type="Script" uid="uid://bgmwplmj3bfls" path="res://scenes/globals/game_state/inventory/inventory_item.gd" id="13_45jf0"]
-[ext_resource type="Resource" uid="uid://bwcejdgtwf6pc" path="res://scenes/quests/story_quests/santuario_corrupto/1_stealth/stealth_components/santuario_corrupto_collected.dialogue" id="14_fidkr"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="15_x0v4b"]
-[ext_resource type="Resource" uid="uid://bs4jl5s4qa01f" path="res://scenes/quests/story_quests/santuario_corrupto/1_stealth/stealth_components/santuario_corrupto_stealth.dialogue" id="16_6p2v2"]
+[ext_resource type="SpriteFrames" uid="uid://bln0ptchvi1e3" path="res://scenes/quests/story_quests/santuario_corrupto/1_stealth/stealth_components/santuario_corrupto_guard_enemy.tres" id="16_6p2v2"]
 
 [sub_resource type="Curve2D" id="Curve2D_wpokt"]
 _data = {
@@ -81,7 +78,7 @@ y_sort_enabled = true
 
 [node name="Guard1-GoingBackAndForth" parent="EnemyGuards" unique_id=1357389645 node_paths=PackedStringArray("patrol_path") instance=ExtResource("7_hgeay")]
 position = Vector2(-704.9998, 465.00003)
-sprite_frames = ExtResource("8_fjfh1")
+sprite_frames = ExtResource("16_6p2v2")
 patrol_path = NodePath("../Guard1-PatrolPath")
 move_speed = 200.0
 
@@ -93,7 +90,7 @@ curve = SubResource("Curve2D_wpokt")
 
 [node name="Guard2-RunningInCircles" parent="EnemyGuards" unique_id=478814464 node_paths=PackedStringArray("patrol_path") instance=ExtResource("7_hgeay")]
 position = Vector2(-137, 829)
-sprite_frames = ExtResource("8_fjfh1")
+sprite_frames = ExtResource("16_6p2v2")
 patrol_path = NodePath("../Guard2-RunningPath")
 wait_time = 0.3
 move_speed = 1000.0
@@ -109,7 +106,6 @@ position = Vector2(-2191, -257)
 
 [node name="Checkpoint" parent="Checkpoints" unique_id=1983094 instance=ExtResource("9_81jk6")]
 position = Vector2(1704, 451)
-dialogue = ExtResource("10_p1jws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint" unique_id=328425926]
 position = Vector2(1, -2)
@@ -125,7 +121,6 @@ visible = false
 position = Vector2(2315, 981)
 next_scene = "uid://nghedn0xdyul"
 item = SubResource("Resource_0v6bb")
-collected_dialogue = ExtResource("14_fidkr")
 
 [node name="Cinematic" type="Node2D" parent="." unique_id=859706882]
 position = Vector2(-72, -7)

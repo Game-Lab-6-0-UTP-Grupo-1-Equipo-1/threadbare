@@ -18,7 +18,7 @@ enum Mode {
 	## Player has ABILITY_B, usually mapped to the "grapple" action.
 	HOOKING,
 }
-
+@export_file("*.tscn") var next_scene: String = ""
 @export var mode: Mode = Mode.COZY:
 	set = set_mode
 
@@ -39,3 +39,8 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		SceneSwitcher.change_to_file_with_transition(next_scene)

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://pk3ucq7e2eah" path="res://scenes/game_logic/player_mode.gd" id="1_24xpn"]
 [ext_resource type="Script" uid="uid://b26u4ijdd2qln" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/santuario_corrupto_combat.gd" id="1_xux7a"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="2_oh3j7"]
-[ext_resource type="Resource" uid="uid://bgti37yhbmope" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/santuario_corrupto_combat.dialogue" id="3_xux7a"]
 [ext_resource type="Script" uid="uid://cp54mgi54nywo" path="res://scenes/game_logic/fill_game_logic.gd" id="4_0le5k"]
 [ext_resource type="TileSet" uid="uid://b282nrrbtkhvk" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto_exterior_floors.tres" id="5_75rg4"]
 [ext_resource type="TileSet" uid="uid://cauvbist6qvsk" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto_shadows.tres" id="6_hkodt"]
@@ -11,10 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://iu2q66clupc6" path="res://scenes/game_elements/characters/player/player.tscn" id="8_kqa71"]
 [ext_resource type="SpriteFrames" uid="uid://b8r8lq0r27m46" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/santuario_corrupto_player.tres" id="9_lv4ns"]
 [ext_resource type="PackedScene" uid="uid://b82nsrh332syj" path="res://scenes/game_elements/characters/enemies/throwing_enemy/throwing_enemy.tscn" id="10_3kpwj"]
-[ext_resource type="SpriteFrames" uid="uid://dyo14cfse766q" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/santuario_corrupto_throwing_enemy.tres" id="11_wptir"]
 [ext_resource type="PackedScene" uid="uid://gkloljeurgjm" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/santuario_corrupto_projectile.tscn" id="12_vxqfc"]
 [ext_resource type="PackedScene" uid="uid://y8ha8abfyap2" path="res://scenes/game_elements/props/filling_barrel/filling_barrel.tscn" id="13_r2hmw"]
-[ext_resource type="SpriteFrames" uid="uid://bgsr6gtbjokas" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/santuario_corrupto_target_spriteframes.tres" id="14_j2ppa"]
+[ext_resource type="SpriteFrames" uid="uid://bn8vmylcl5gi7" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/santuario_corrupto_projectile_spriteframes.tres" id="14_j2ppa"]
 [ext_resource type="PackedScene" uid="uid://fuhl3l6gxq5k" path="res://scenes/game_elements/props/collectible_item/collectible_item.tscn" id="15_q4005"]
 [ext_resource type="Script" uid="uid://bgmwplmj3bfls" path="res://scenes/globals/game_state/inventory/inventory_item.gd" id="16_hchck"]
 [ext_resource type="PackedScene" uid="uid://dmevaymmt6wco" path="res://scenes/game_elements/props/powerup/powerup.tscn" id="17_4ybr8"]
@@ -24,6 +22,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_xux7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xux7a"]
+size = Vector2(25.800003, 56.199993)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0le5k"]
 
@@ -51,12 +50,12 @@ metadata/_custom_type_script = "uid://pk3ucq7e2eah"
 
 [node name="Cinematic" type="Node2D" parent="." unique_id=951341763]
 script = ExtResource("2_oh3j7")
-dialogue = ExtResource("3_xux7a")
+dialogue = ExtResource("14_j2ppa")
 metadata/_custom_type_script = "uid://x1mxt6bmei2o"
 
 [node name="FillGameLogic" type="Node" parent="." unique_id=1828019770]
 script = ExtResource("4_0le5k")
-next_scene = "uid://cja8ndt5fhe3s"
+next_scene = "uid://41qiaabl5scc"
 metadata/_custom_type_script = "uid://cp54mgi54nywo"
 
 [node name="Timer" type="Timer" parent="FillGameLogic" unique_id=465916117]
@@ -103,12 +102,12 @@ sprite_frames = ExtResource("9_lv4ns")
 position = Vector2(779, 233)
 distance = 6.0
 throwing_period = 0.7
-sprite_frames = ExtResource("11_wptir")
+sprite_frames = ExtResource("14_j2ppa")
 projectile_scene = ExtResource("12_vxqfc")
 projectile_speed = 45.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="OnTheGround/ThrowingNPC" unique_id=1399319807]
-position = Vector2(-0.9999995, -37.999996)
+position = Vector2(-3.9999993, -40.999996)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_xux7a")
 
@@ -116,19 +115,19 @@ shape = SubResource("RectangleShape2D_xux7a")
 position = Vector2(753, 323)
 distance = 6.0
 throwing_period = 0.7
-sprite_frames = ExtResource("11_wptir")
+sprite_frames = ExtResource("14_j2ppa")
 projectile_scene = ExtResource("12_vxqfc")
 projectile_speed = 45.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="OnTheGround/ThrowingNPC3" unique_id=561082781]
-position = Vector2(-4.999998, -35.999992)
+position = Vector2(9.5, 54.5)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_xux7a")
 
 [node name="ThrowingNPC2" parent="OnTheGround" unique_id=1288577308 instance=ExtResource("10_3kpwj")]
 position = Vector2(763, 432)
 distance = 11.0
-sprite_frames = ExtResource("11_wptir")
+sprite_frames = ExtResource("14_j2ppa")
 projectile_scene = ExtResource("12_vxqfc")
 projectile_duration = 2.3
 
@@ -138,7 +137,6 @@ scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_0le5k")
 
 [node name="Target" parent="OnTheGround" unique_id=1718603548 instance=ExtResource("13_r2hmw")]
-visible = false
 position = Vector2(17, 122)
 sprite_frames = ExtResource("14_j2ppa")
 label = ""
@@ -149,7 +147,6 @@ unique_name_in_owner = true
 position = Vector2(882, 299)
 next_scene = "uid://cja8ndt5fhe3s"
 item = SubResource("Resource_bawwo")
-collected_dialogue = ExtResource("3_xux7a")
 dialogue_title = &"well_done"
 
 [node name="RepelPowerup" parent="OnTheGround" unique_id=1795462717 instance=ExtResource("17_4ybr8")]

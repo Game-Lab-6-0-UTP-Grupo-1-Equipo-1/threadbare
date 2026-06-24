@@ -4,8 +4,8 @@ extends Node
 @export var autostart: bool = false   
 @onready var cinematic = $"../../Cinematic"
 
-@onready var timer: Timer = $"../../Timer"
-@onready var label: Label = $"../../Label"
+@onready var timer: Timer = $Timer
+@onready var label: Label = $Label
 
 signal tiempo_terminado
 
