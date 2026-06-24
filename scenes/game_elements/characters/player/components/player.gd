@@ -235,8 +235,9 @@ func _toggle_abilities() -> void:
 func _on_abilities_changed() -> void:
 	if mode != Mode.DEFEATED:
 		_toggle_abilities()
-
-
+		
+		
+	
 ## Handles game over logic: restarts from the beginning of the current challenge
 ## with lives reset to 3.
 func _handle_game_over() -> void:
@@ -263,3 +264,5 @@ func _on_player_hook_aiming_changed(is_aiming: bool) -> void:
 		aiming_speed if is_aiming else _initial_speeds.walk_speed
 	)
 	input_walk_behavior.speeds.run_speed = aiming_speed if is_aiming else _initial_speeds.run_speed
+	
+	

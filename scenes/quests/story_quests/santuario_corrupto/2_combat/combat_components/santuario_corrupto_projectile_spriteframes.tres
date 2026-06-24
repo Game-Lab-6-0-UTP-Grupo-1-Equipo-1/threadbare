@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bn8vmylcl5gi7"]
+
+[ext_resource type="Texture2D" uid="uid://dtff4178plv5q" path="res://scenes/quests/story_quests/santuario_corrupto/2_combat/combat_components/ink_blob.png" id="1_kqeen"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfsd2"]
+atlas = ExtResource("1_kqeen")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqfa6"]
+atlas = ExtResource("1_kqeen")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecad0"]
+atlas = ExtResource("1_kqeen")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h37eb"]
+atlas = ExtResource("1_kqeen")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8xph"]
+atlas = ExtResource("1_kqeen")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgj2w"]
+atlas = ExtResource("1_kqeen")
+region = Rect2(0, 320, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfsd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqfa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecad0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h37eb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8xph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgj2w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

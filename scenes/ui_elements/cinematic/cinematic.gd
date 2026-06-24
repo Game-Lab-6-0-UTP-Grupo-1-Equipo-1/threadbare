@@ -40,6 +40,9 @@ func start() -> void:
 		await DialogueManager.dialogue_ended
 		cinematic_finished.emit()
 		GameState.intro_dialogue_shown = true
+	else:
+		cinematic_finished.emit()
+		
 
 	if next_scene:
 		(

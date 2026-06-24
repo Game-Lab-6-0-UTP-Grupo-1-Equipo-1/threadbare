@@ -165,8 +165,8 @@ func _get_configuration_warnings() -> PackedStringArray:
 		)
 	return warnings
 
-
 func _ready() -> void:
+
 	_initial_position = position
 	_set_sprite_frames(sprite_frames)
 	if Engine.is_editor_hint():
@@ -179,7 +179,6 @@ func _ready() -> void:
 		scale.x = 1 if direction.x < 0 else -1
 	if autostart:
 		start()
-
 
 func _draw() -> void:
 	if walking_time == 0 or walking_range == 0:
@@ -328,9 +327,6 @@ func _on_got_hit(body: Node2D) -> void:
 ## Start attacking and/or walking. The enemy will be idle until this is called.
 ## See [member autostart].
 func start() -> void:
-	if _has_started:
-		return
-	_has_started = true
 	if not is_node_ready():
 		await ready
 	timer.wait_time = throwing_period

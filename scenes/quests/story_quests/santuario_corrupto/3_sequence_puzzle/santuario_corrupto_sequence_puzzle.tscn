@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://covsdqqsd6rsy" path="res://scenes/game_elements/props/sign/sign.tscn" id="23_dllws"]
 [ext_resource type="PackedScene" uid="uid://cfcgrfvtn04yp" path="res://scenes/ui_elements/hud/hud.tscn" id="24_0ojew"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="25_04c5m"]
+[ext_resource type="PackedScene" uid="uid://dk6nkirghpkxn" path="res://scenes/quests/story_quests/santuario_corrupto/3_sequence_puzzle/spawn_trigo.tscn" id="26_7poe7"]
 
 [sub_resource type="Resource" id="Resource_kiraf"]
 script = ExtResource("21_mql1a")
@@ -137,7 +138,6 @@ hint_sign = NodePath("../../Signs/HintSign2")
 
 [node name="CollectibleItem" parent="OnTheGround" unique_id=1678374994 instance=ExtResource("20_tmf66")]
 position = Vector2(861, 282)
-revealed = false
 next_scene = "uid://cjnyt5tnlfon6"
 item = SubResource("Resource_kiraf")
 collected_dialogue = ExtResource("22_s6nj5")
@@ -156,5 +156,10 @@ text = "First melody: yellow, green, blue."
 script = ExtResource("25_04c5m")
 dialogue = ExtResource("22_s6nj5")
 metadata/_custom_type_script = "uid://x1mxt6bmei2o"
+
+[node name="SpawnTrigo" parent="." unique_id=298352701 instance=ExtResource("26_7poe7")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1084372262]
+color = Color(0.481789, 0.48179, 0.481789, 1)
 
 [connection signal="solved" from="OnTheGround/SequencePuzzle" to="OnTheGround/CollectibleItem" method="reveal"]
