@@ -1,5 +1,9 @@
 # SPDX-FileCopyrightText: The Threadbare Authors
 # SPDX-License-Identifier: MPL-2.0
 ~ start
-[[Hi|Hello|Greetings]], {{player_name}}.
+Mensajero Del Maiz: [[Madre del Maíz… ha sido corrompida por la sombra del dragón.]]
+Mensajero Del Maiz: [[El maizal está vivo, pero enfermo.]]
+Mensajero Del Maiz: [[Busca a los guardianes del santuario. Ellos te guiarán..]]
+Mensajero Del Maiz: [[Ten cuidado con el dragon, es muy poderoso]]
+Mensajero Del Maiz: [[Y estara observandote desde las sombras]]
 => END

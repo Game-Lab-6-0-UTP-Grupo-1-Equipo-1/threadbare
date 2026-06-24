@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: The Threadbare Authors
+# SPDX-License-Identifier: MPL-2.0
+
+~ start
+do animation_player.play(&"walk_on")
+do animation_player.animation_finished
+Bienvenido al Santuario del Maíz.
+Caminaste durante horas en busca de tu madre, siguiendo rumores sobre un lugar mágico oculto entre los cultivos y las montañas.
+Sin embargo, al llegar, notas que algo no está bien...
+Los cultivos están marchitos.
+Extrañas criaturas recorren los caminos.
+Y una enorme sombra parece observarte desde la distancia...
+do animation_player.play(&"walk_off")
+Investiga qué está ocurriendo en el santuario.
+Tal vez aquí encuentres respuestas.
+Y quizás... también encuentres a tu madre.
+=> END

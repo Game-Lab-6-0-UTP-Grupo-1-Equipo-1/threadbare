@@ -1,0 +1,940 @@
+[gd_scene format=4 uid="uid://3n8k634g3fjn"]
+
+[ext_resource type="TileSet" uid="uid://b282nrrbtkhvk" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto_exterior_floors.tres" id="1_qp82b"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_b4pwy"]
+[ext_resource type="Texture2D" uid="uid://bi65vyd341ckk" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/doro doro final.png" id="4_qp82b"]
+[ext_resource type="Texture2D" uid="uid://7afi18x3x1dm" path="res://assets/third_party/tiny-swords/Deco/18.png" id="5_eujs7"]
+[ext_resource type="Resource" uid="uid://b0p6fwdflqoas" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/dialogo de doro doro.dialogue" id="6_eujs7"]
+[ext_resource type="Script" uid="uid://du8wfijr35r35" path="res://scenes/game_elements/props/interact_area/interact_area.gd" id="6_f3vbu"]
+[ext_resource type="Script" uid="uid://edcifob4jc4s" path="res://scenes/game_logic/talk_behavior.gd" id="7_63juc"]
+[ext_resource type="PackedScene" uid="uid://iu2q66clupc6" path="res://scenes/game_elements/characters/player/player.tscn" id="8_4i2ia"]
+[ext_resource type="SpriteFrames" uid="uid://b8r8lq0r27m46" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/santuario_corrupto_player.tres" id="9_hsk4w"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="11_5s136"]
+[ext_resource type="Texture2D" uid="uid://def3f4migi3fu" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto tilest/Top-Down Trees/Trees_texture_shadow_dark/Fruit_tree1.png" id="12_qp82b"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_yxnnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvj5c"]
+size = Vector2(844.6499, 332.99994)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4pwy"]
+size = Vector2(2843, 346)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp82b"]
+size = Vector2(360, 573)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5i5h"]
+size = Vector2(519, 970)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3vbu"]
+size = Vector2(267.5, 420)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i2ia"]
+size = Vector2(1366.5, 242.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63juc"]
+size = Vector2(34.705887, 61.764694)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsk4w"]
+size = Vector2(194.5, 238)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksxws"]
+size = Vector2(123.52939, 108.52942)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pa64"]
+size = Vector2(42.109695, 53.47265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eujs7"]
+size = Vector2(42.77813, 55.477905)
+
+[sub_resource type="Resource" id="Resource_wqh38"]
+script = ExtResource("12_yxnnc")
+
+[node name="SantuarioCorruptoIntro" type="Node2D" unique_id=2049284984]
+
+[node name="TileMapLayers" type="Node2D" parent="." unique_id=591504591]
+position = Vector2(68, -87)
+
+[node name="Pasto" type="TileMapLayer" parent="TileMapLayers" unique_id=397514282]
+tile_map_data = PackedByteArray("AAAAAAUAAQABAAEAAAABAAUAAQABAAEAAAACAAUAAQABAAEAAAADAAUAAQABAAEAAAAEAAUAAQABAAEAAAAFAAUAAQABAAEAAAAGAAUAAQABAAEAAAAHAAUAAQABAAEAAAAIAAUAAQABAAEAAAAJAAUAAQABAAEAAAAKAAUAAQABAAEAAAALAAUAAQABAAEAAAAMAAUAAQABAAEAAAANAAUAAQABAAEAAAAOAAUAAQABAAEAAAAAAAgAAQABAAEAAAABAAgAAQABAAEAAAACAAYAAQABAAEAAAACAAgAAQABAAEAAAADAAYAAQABAAEAAAADAAgAAQABAAEAAAAEAAYAAQABAAEAAAAEAAgAAQABAAEAAAAFAAYAAQABAAEAAAAFAAgAAQABAAEAAAAGAAYAAQABAAEAAAAGAAgAAQABAAEAAAAHAAYAAQABAAEAAAAHAAgAAQABAAEAAAAIAAYAAQABAAEAAAAIAAgAAQABAAEAAAAJAAYAAQABAAEAAAAJAAgAAQABAAEAAAAKAAYAAQABAAEAAAAKAAgAAQABAAEAAAALAAYAAQABAAEAAAALAAgAAQABAAEAAAAMAAYAAQABAAEAAAAMAAgAAQABAAEAAAANAAYAAQABAAEAAAANAAgAAQABAAEAAAAOAAYAAQABAAEAAAAOAAgAAQABAAEAAAAAAAAAAQABAAEAAAAAAAEAAQABAAEAAAABAAEAAQABAAEAAAACAAEAAQABAAEAAAACAAIAAQABAAEAAAADAAIAAQABAAEAAAAEAAIAAQABAAEAAAAFAAIAAQABAAEAAAAFAAMAAQABAAEAAAAGAAMAAQABAAEAAAAHAAQAAQABAAEAAAAIAAQAAQABAAEAAAAOAAQAAQABAAEAAAAOAAMAAQABAAEAAAAOAAIAAQABAAEAAAAOAAEAAQABAAEAAAAOAAAAAQABAAEAAAANAAQAAQABAAEAAAANAAMAAQABAAEAAAANAAIAAQABAAEAAAANAAEAAQABAAEAAAANAAAAAQABAAEAAAAMAAQAAQABAAEAAAAMAAMAAQABAAEAAAAMAAIAAQABAAEAAAAMAAEAAQABAAEAAAAMAAAAAQABAAEAAAALAAQAAQABAAEAAAALAAMAAQABAAEAAAALAAIAAQABAAEAAAALAAEAAQABAAEAAAALAAAAAQABAAEAAAAKAAQAAQABAAEAAAAKAAMAAQABAAEAAAAKAAIAAQABAAEAAAAKAAEAAQABAAEAAAAKAAAAAQABAAEAAAAJAAQAAQABAAEAAAAJAAMAAQABAAEAAAAJAAIAAQABAAEAAAAJAAEAAQABAAEAAAAJAAAAAQABAAEAAAAIAAMAAQABAAEAAAAIAAIAAQABAAEAAAAIAAEAAQABAAEAAAAIAAAAAQABAAEAAAAHAAMAAQABAAEAAAAHAAIAAQABAAEAAAAHAAEAAQABAAEAAAAHAAAAAQABAAEAAAAGAAQAAQABAAEAAAAGAAIAAQABAAEAAAAGAAEAAQABAAEAAAAGAAAAAQABAAEAAAAFAAQAAQABAAEAAAAFAAEAAQABAAEAAAAFAAAAAQABAAEAAAAEAAMAAQABAAEAAAAEAAEAAQABAAEAAAAEAAAAAQABAAEAAAADAAQAAQABAAEAAAADAAMAAQABAAEAAAADAAEAAQABAAEAAAADAAAAAQABAAEAAAACAAQAAQABAAEAAAACAAMAAQABAAEAAAACAAAAAQABAAEAAAABAAQAAQABAAEAAAABAAMAAQABAAEAAAABAAIAAQABAAEAAAABAAAAAQABAAEAAAAAAAQAAQABAAEAAAAAAAMAAQABAAEAAAAAAAIAAQABAAEAAAAAAAkAAQABAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAADAAkAAQABAAEAAAAEAAkAAQABAAEAAAAFAAkAAQABAAEAAAAGAAkAAQABAAEAAAAHAAkAAQABAAEAAAAIAAkAAQABAAEAAAAJAAkAAQABAAEAAAAKAAkAAQABAAEAAAALAAkAAQABAAEAAAAMAAkAAQABAAEAAAANAAkAAQABAAEAAAAOAAkAAQABAAEAAAAAAP//AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQABAAAAAAAHAP//AQABAAAAAAAIAP//AQABAAAAAAAJAP//AQABAAAAAAAKAP//AQABAAAAAAALAP//AQABAAAAAAAMAP//AQABAAAAAAANAP//AQABAAAAAAAOAP//AQABAAAAAAAPAP//AQABAAAAAAAPAAAAAQABAAEAAAAPAAEAAQABAAEAAAAPAAkAAQABAAEAAAAPAAgAAQABAAEAAAAPAAYAAQABAAEAAAAPAAUAAQABAAEAAAAPAAQAAQABAAEAAAAPAAMAAQABAAEAAAAPAAIAAQABAAEAAAD/////AQABAAAAAAD//wAAAQABAAEAAAD//wEAAQABAAEAAAD//wIAAQABAAEAAAD//wMAAQABAAEAAAD//wQAAQABAAEAAAD//wUAAQABAAEAAAD//wgAAQABAAEAAAD//wkAAQABAAEAAAD+/wMAAQABAAEAAAD+/wIAAQABAAEAAAD+/wEAAQABAAEAAAD+/wAAAQABAAEAAAD+////AQABAAAAAAAQAP//AQABAAAAAAAQAAAAAQABAAEAAAAQAAEAAQABAAEAAAAQAAIAAQABAAEAAAAQAAMAAQABAAEAAAAQAAQAAQABAAEAAAAQAAUAAQABAAEAAAAQAAYAAQABAAEAAAAQAAgAAQABAAEAAAAQAAkAAQABAAEAAAAQAAoAAQABAAEAAAAPAAoAAQABAAEAAAAOAAoAAQABAAEAAAANAAoAAQABAAEAAAAMAAoAAQABAAEAAAALAAoAAQABAAEAAAAKAAoAAQABAAEAAAAJAAoAAQABAAEAAAAIAAoAAQABAAEAAAAHAAoAAQABAAEAAAAGAAoAAQABAAEAAAAFAAoAAQABAAEAAAAEAAoAAQABAAEAAAADAAoAAQABAAEAAAACAAoAAQABAAEAAAABAAoAAQABAAEAAAAAAAoAAQABAAEAAAD//woAAQABAAEAAAD+/woAAQABAAEAAAD+/wkAAQABAAEAAAD+/wgAAQABAAEAAAD+/wUAAQABAAEAAAD+/wQAAQABAAEAAAD9/wQAAQABAAEAAAD9/wMAAQABAAEAAAD9/wIAAQABAAEAAAD9/wEAAQABAAEAAAD9/wAAAQABAAEAAAD9////AQABAAAAAAARAP//AQABAAAAAAARAAAAAQABAAEAAAARAAEAAQABAAEAAAARAAIAAQABAAEAAAARAAMAAQABAAEAAAARAAQAAQABAAEAAAARAAUAAQABAAEAAAARAAYAAQABAAEAAAARAAgAAQABAAEAAAARAAkAAQABAAEAAAARAAoAAQABAAEAAAARAAsAAQABAAEAAAAQAAsAAQABAAEAAAAPAAsAAQABAAEAAAAOAAsAAQABAAEAAAANAAsAAQABAAEAAAAMAAsAAQABAAEAAAALAAsAAQABAAEAAAAKAAsAAQABAAEAAAAJAAsAAQABAAEAAAAIAAsAAQABAAEAAAAHAAsAAQABAAEAAAAGAAsAAQABAAEAAAAFAAsAAQABAAEAAAAEAAsAAQABAAEAAAADAAsAAQABAAEAAAACAAsAAQABAAEAAAABAAsAAQABAAEAAAAAAAsAAQABAAEAAAD//wsAAQABAAEAAAD+/wsAAQABAAEAAAD9/wsAAQABAAEAAAD9/woAAQABAAEAAAD9/wkAAQABAAEAAAD9/wgAAQABAAEAAAD9/wUAAQABAAEAAAD8/wkAAQABAAEAAAD8/wgAAQABAAEAAAD8/wUAAQABAAEAAAD8/wQAAQABAAEAAAD8/wMAAQABAAEAAAD8/wIAAQABAAEAAAD8/wEAAQABAAEAAAD8/wAAAQABAAEAAAD8////AQABAAAAAAASAP//AQABAAAAAAASAAAAAQABAAEAAAASAAEAAQABAAEAAAASAAIAAQABAAEAAAASAAMAAQABAAEAAAASAAQAAQABAAEAAAASAAUAAQABAAEAAAASAAYAAQABAAEAAAASAAgAAQABAAEAAAASAAoAAQABAAEAAAASAAsAAQABAAEAAAASAAkAAQABAAEAAAASAAwAAQABAAEAAAARAAwAAQABAAEAAAAQAAwAAQABAAEAAAAPAAwAAQABAAEAAAAOAAwAAQABAAEAAAANAAwAAQABAAEAAAAMAAwAAQABAAEAAAALAAwAAQABAAEAAAAKAAwAAQABAAEAAAAJAAwAAQABAAEAAAAIAAwAAQABAAEAAAAHAAwAAQABAAEAAAAGAAwAAQABAAEAAAAFAAwAAQABAAEAAAAEAAwAAQABAAEAAAADAAwAAQABAAEAAAACAAwAAQABAAEAAAABAAwAAQABAAEAAAAAAAwAAQABAAEAAAD//wwAAQABAAEAAAD+/wwAAQABAAEAAAD9/wwAAQABAAEAAAD8/wwAAQABAAEAAAD8/wsAAQABAAEAAAD8/woAAQABAAEAAAD7/wUAAQABAAEAAAD7/wQAAQABAAEAAAD7/wMAAQABAAEAAAD7/wIAAQABAAEAAAD7/wEAAQABAAEAAAD7/wAAAQABAAEAAAD7////AQABAAAAAAATAP//AQABAAAAAAATAAAAAQABAAEAAAATAAEAAQABAAEAAAATAAIAAQABAAEAAAATAAQAAQABAAEAAAATAAUAAQABAAEAAAATAAYAAQABAAEAAAATAAgAAQABAAEAAAATAAkAAQABAAEAAAATAAoAAQABAAEAAAATAAsAAQABAAEAAAATAAwAAQABAAEAAAASAA0AAQABAAEAAAATAA0AAQABAAEAAAARAA0AAQABAAEAAAAQAA0AAQABAAEAAAAPAA0AAQABAAEAAAAOAA0AAQABAAEAAAANAA0AAQABAAEAAAAMAA0AAQABAAEAAAALAA0AAQABAAEAAAAKAA0AAQABAAEAAAAJAA0AAQABAAEAAAAIAA0AAQABAAEAAAAHAA0AAQABAAEAAAAGAA0AAQABAAEAAAAFAA0AAQABAAEAAAAEAA0AAQABAAEAAAADAA0AAQABAAEAAAACAA0AAQABAAEAAAABAA0AAQABAAEAAAAAAA0AAQABAAEAAAD//w0AAQABAAEAAAD+/w0AAQABAAEAAAD9/w0AAQABAAEAAAD8/w0AAQABAAEAAAD7/w0AAQABAAEAAAD7/wwAAQABAAEAAAD7/wsAAQABAAEAAAD7/woAAQABAAEAAAD7/wkAAQABAAEAAAD7/wgAAQABAAEAAAD5/wgAAQABAAEAAAD5/wkAAQABAAEAAAD5/woAAQABAAEAAAD5/wsAAQABAAEAAAD5/wwAAQABAAEAAAD5/w0AAQABAAEAAAD6/w0AAQABAAEAAAD6/wwAAQABAAEAAAD6/wQAAQABAAEAAAD6/wMAAQABAAEAAAD6/wIAAQABAAEAAAD6/wEAAQABAAEAAAD6/wAAAQABAAEAAAD6////AQABAAAAAAD5////AQABAAAAAAD5/wAAAQABAAEAAAD5/wEAAQABAAEAAAD5/wIAAQABAAEAAAD5/wMAAQABAAEAAAD5/wQAAQABAAEAAAD5/wUAAQABAAEAAAD6/wUAAQABAAEAAAD6/wYAAQABAAEAAAD6/wsAAQABAAEAAAD6/woAAQABAAEAAAD6/wkAAQABAAEAAAD6/wgAAQABAAEAAAAWAAQAAQABAAEAAAAWAAUAAQABAAEAAAAWAAYAAQABAAEAAAAWAAgAAQABAAEAAAAWAAkAAQABAAEAAAAWAAoAAQABAAEAAAAWAAsAAQABAAEAAAAVAAwAAQABAAEAAAAVAA0AAQABAAEAAAAWAAwAAQABAAEAAAAVAAQAAQABAAEAAAAVAAMAAQABAAEAAAAVAAIAAQABAAEAAAAVAAEAAQABAAEAAAAVAAAAAQABAAEAAAAWAAEAAQABAAEAAAAWAAIAAQABAAEAAAAWAAMAAQABAAEAAAAVAAgAAQABAAEAAAAVAAkAAQABAAEAAAAVAAoAAQABAAEAAAAVAAsAAQABAAEAAAAUAAsAAQABAAEAAAAUAAwAAQABAAEAAAAUAAoAAQABAAEAAAAUAAkAAQABAAEAAAAUAAgAAQABAAEAAAAUAAUAAQABAAEAAAAUAAIAAQABAAEAAAAUAAEAAQABAAEAAAAUAAAAAQABAAEAAAAUAP//AQABAAAAAAAEAAQAAQABAAEAAAAUAAYAAQABAAEAAAAVAAYAAQABAAEAAAAVAAUAAQABAAEAAAAWAP//AQABAAEAAAAWAAAAAQABAAEAAAD7/wYAAQABAAEAAAD8/wYAAQABAAEAAAD9/wYAAQABAAEAAAD+/wYAAQABAAEAAAD//wYAAQABAAEAAAAAAAYAAQABAAEAAAABAAYAAQABAAEAAAAWAA0AAQABAAEAAAAVAP//AQABAAAAAAAWAA4AAQABAAEAAAAVAA4AAQABAAEAAAAUAA4AAQABAAEAAAATAA4AAQABAAEAAAASAA4AAQABAAEAAAARAA4AAQABAAEAAAAQAA4AAQABAAEAAAAPAA4AAQABAAEAAAAOAA4AAQABAAEAAAANAA4AAQABAAEAAAAMAA4AAQABAAEAAAALAA4AAQABAAEAAAAKAA4AAQABAAEAAAAJAA4AAQABAAEAAAAIAA4AAQABAAEAAAAHAA4AAQABAAEAAAAGAA4AAQABAAEAAAAUAA0AAQABAAEAAAAFAA4AAQABAAEAAAAEAA4AAQABAAEAAAADAA4AAQABAAEAAAACAA4AAQABAAEAAAABAA4AAQABAAEAAAD8/w4AAQABAAEAAAD7/w4AAQABAAEAAAD6/w4AAQABAAEAAAD5/w4AAQABAAEAAAD9/w4AAQABAAEAAAD+/w4AAQABAAEAAAD//w4AAQABAAEAAAAAAA4AAQABAAEAAAD5/wcAAQABAAEAAAD6/wcAAQABAAEAAAD7/wcAAQABAAEAAAD8/wcAAQABAAEAAAD9/wcAAQABAAEAAAD+/wcAAQABAAEAAAD//wcAAQABAAEAAAAAAAcAAQABAAEAAAABAAcAAQABAAEAAAACAAcAAQABAAEAAAADAAcAAQABAAEAAAAEAAcAAQABAAEAAAAFAAcAAQABAAEAAAAGAAcAAQABAAEAAAAHAAcAAQABAAEAAAAIAAcAAQABAAEAAAAJAAcAAQABAAEAAAAKAAcAAQABAAEAAAALAAcAAQABAAEAAAAMAAcAAQABAAEAAAANAAcAAQABAAEAAAAOAAcAAQABAAEAAAAPAAcAAQABAAEAAAAQAAcAAQABAAEAAAARAAcAAQABAAEAAAASAAcAAQABAAEAAAATAAcAAQABAAEAAAAVAAcAAQABAAEAAAAWAAcAAQABAAEAAAAUAAcAAQABAAEAAAD5/wYAAQABAAEAAAD7/w8AAQABAAEAAAD8/w8AAQABAAEAAAD9/w8AAQABAAEAAAD+/w8AAQABAAEAAAD//w8AAQABAAEAAAAAAA8AAQABAAEAAAABAA8AAQABAAEAAAACAA8AAQABAAEAAAADAA8AAQABAAEAAAAEAA8AAQABAAEAAAAFAA8AAQABAAEAAAAGAA8AAQABAAEAAAAHAA8AAQABAAEAAAAIAA8AAQABAAEAAAAJAA8AAQABAAEAAAAKAA8AAQABAAEAAAALAA8AAQABAAEAAAAMAA8AAQABAAEAAAANAA8AAQABAAEAAAAOAA8AAQABAAEAAAAPAA8AAQABAAEAAAAQAA8AAQABAAEAAAARAA8AAQABAAEAAAASAA8AAQABAAEAAAATAA8AAQABAAEAAAAUAA8AAQABAAEAAAAVAA8AAQABAAEAAAAWAA8AAQABAAEAAAD4/wAAAQABAAEAAAD4/wEAAQABAAEAAAD4/wIAAQABAAEAAAD4/wMAAQABAAEAAAD4/wQAAQABAAEAAAD4/wUAAQABAAEAAAD4/wYAAQABAAEAAAD4/wcAAQABAAEAAAD4/wgAAQABAAEAAAD4/wkAAQABAAEAAAD4/woAAQABAAEAAAD4/wsAAQABAAEAAAD4/wwAAQABAAEAAAD4/w0AAQABAAEAAAD4/w4AAQABAAEAAAD6/w8AAQABAAEAAAD5/w8AAQABAAEAAAD4////AQABAAAAAAD4/w8AAQABAAEAAAD3/w8AAQABAAEAAAD2/w8AAQABAAEAAAD1/w8AAQABAAEAAAD3/w4AAQABAAEAAAD2/w4AAQABAAEAAAD2/w0AAQABAAEAAAD2/wwAAQABAAEAAAD2/wsAAQABAAEAAAD2/woAAQABAAEAAAD2/wkAAQABAAEAAAD2/wgAAQABAAEAAAD2/wcAAQABAAEAAAD2/wYAAQABAAEAAAD2/wUAAQABAAEAAAD2/wQAAQABAAEAAAD2/wMAAQABAAEAAAD2/wIAAQABAAEAAAD2/wEAAQABAAEAAAD3/wAAAQABAAEAAAD3/wEAAQABAAEAAAD3/wIAAQABAAEAAAD3/wMAAQABAAEAAAD3/wQAAQABAAEAAAD3/wUAAQABAAEAAAD3/wYAAQABAAEAAAD3/wcAAQABAAEAAAD3/wgAAQABAAEAAAD3/wkAAQABAAEAAAD3/woAAQABAAEAAAD3/wsAAQABAAEAAAD3/wwAAQABAAEAAAD3/w0AAQABAAEAAAD2/wAAAQABAAEAAAD3////AQABAAAAAAD2////AQABAAAAAAD1////AQABAAAAAAD1/wAAAQABAAEAAAD1/wEAAQABAAEAAAD1/wIAAQABAAEAAAD1/wMAAQABAAEAAAD1/wQAAQABAAEAAAD1/wUAAQABAAEAAAD1/wYAAQABAAEAAAD1/wcAAQABAAEAAAD1/wgAAQABAAEAAAD1/wkAAQABAAEAAAD1/woAAQABAAEAAAD1/wsAAQABAAEAAAD1/wwAAQABAAEAAAD1/w0AAQABAAEAAAD1/w4AAQABAAEAAAAWABAAAQABAAIAAAD1/xAAAQABAAIAAAD2/xAAAQABAAIAAAD3/xAAAQABAAIAAAD4/xAAAQABAAIAAAD5/xAAAQABAAIAAAD6/xAAAQABAAIAAAD7/xAAAQABAAIAAAD8/xAAAQABAAIAAAD9/xAAAQABAAIAAAD+/xAAAQABAAIAAAD//xAAAQABAAIAAAAAABAAAQABAAIAAAABABAAAQABAAIAAAACABAAAQABAAIAAAADABAAAQABAAIAAAAEABAAAQABAAIAAAAFABAAAQABAAIAAAAGABAAAQABAAIAAAAHABAAAQABAAIAAAAIABAAAQABAAIAAAAJABAAAQABAAIAAAAKABAAAQABAAIAAAALABAAAQABAAIAAAAMABAAAQABAAIAAAANABAAAQABAAIAAAAOABAAAQABAAIAAAAPABAAAQABAAIAAAAQABAAAQABAAIAAAARABAAAQABAAIAAAASABAAAQABAAIAAAATABAAAQABAAIAAAAUABAAAQABAAIAAAAVABAAAQABAAIAAAAXAP//AQACAAAAAAAXABAAAQABAAIAAAAXAA8AAQACAAEAAAAXAA4AAQACAAEAAAAXAA0AAQACAAEAAAAXAAwAAQACAAEAAAAXAAsAAQACAAEAAAAXAAoAAQACAAEAAAAXAAkAAQABAAEAAAAXAAgAAQABAAEAAAAXAAcAAQABAAEAAAAXAAYAAQACAAEAAAAXAAUAAQACAAEAAAAXAAQAAQACAAEAAAAXAAMAAQACAAEAAAAXAAIAAQACAAEAAAAXAAEAAQACAAEAAAAXAAAAAQACAAEAAAD0/xAAAQABAAIAAADz/xAAAQABAAIAAADy/xAAAQABAAIAAADx/xAAAQABAAIAAAD0/wAAAQABAAEAAAD0/wEAAQABAAEAAAD0/wIAAQABAAEAAAD0/wMAAQABAAEAAAD0/wQAAQABAAEAAAD0/wUAAQABAAEAAAD0/wYAAQABAAEAAAD0/wcAAQABAAEAAAD0/wgAAQABAAEAAAD0/wkAAQABAAEAAAD0/woAAQABAAEAAAD0/wsAAQABAAEAAAD0/wwAAQABAAEAAAD0/w0AAQABAAEAAAD0/w4AAQABAAEAAAD0/w8AAQABAAEAAADz/w8AAQABAAEAAADy/w8AAQABAAEAAADy/w4AAQABAAEAAADy/w0AAQABAAEAAADy/wwAAQABAAEAAADz/wwAAQABAAEAAADz/w0AAQABAAEAAADz/w4AAQABAAEAAADz/wsAAQABAAEAAADz/woAAQABAAEAAADz/wkAAQABAAEAAAD0////AQABAAAAAADz////AQABAAEAAADy////AQABAAAAAADx////AQABAAAAAADz/wAAAQABAAEAAADz/wEAAQABAAEAAADz/wIAAQABAAEAAADz/wMAAQABAAEAAADz/wQAAQABAAEAAADz/wUAAQABAAEAAADz/wYAAQABAAEAAADz/wcAAQABAAEAAADz/wgAAQABAAEAAADy/wEAAQABAAEAAADy/wIAAQABAAEAAADy/wMAAQABAAEAAADy/wQAAQABAAEAAADy/wUAAQABAAEAAADy/wYAAQABAAEAAADy/wcAAQABAAEAAADy/wgAAQABAAEAAADy/wkAAQABAAEAAADy/woAAQABAAEAAADy/wsAAQABAAEAAADy/wAAAQABAAEAAADx/wAAAQABAAEAAADx/wEAAQABAAEAAADx/wIAAQABAAEAAADx/wMAAQABAAEAAADx/wQAAQABAAEAAADx/wUAAQABAAEAAADx/wYAAQABAAEAAADx/wcAAQABAAEAAADx/wgAAQABAAEAAADx/wkAAQABAAEAAADx/woAAQABAAEAAADx/wsAAQABAAEAAADx/wwAAQABAAEAAADx/w0AAQABAAEAAADx/w4AAQABAAEAAADx/w8AAQABAAEAAADw/xAAAQABAAIAAADw/w8AAQABAAEAAADw/wAAAQABAAEAAADw/wEAAQABAAEAAADw/wIAAQABAAEAAADw/wMAAQABAAEAAADw/wQAAQABAAEAAADw/wUAAQABAAEAAADw/wYAAQABAAEAAADw/wcAAQABAAEAAADw/wgAAQABAAEAAADw/wkAAQABAAEAAADw/woAAQABAAEAAADw/wsAAQABAAEAAADw/wwAAQABAAEAAADw/w0AAQABAAEAAADw/w4AAQABAAEAAADw////AQABAAAAAADv////AQAAAAEAAADv/wAAAQAAAAEAAADv/wEAAQAAAAEAAADv/wIAAQAAAAEAAADv/wMAAQAAAAEAAADv/wQAAQAAAAEAAADv/wUAAQAAAAEAAADv/wYAAQAAAAEAAADv/wcAAQAAAAEAAADv/wgAAQAAAAEAAADv/wkAAQAAAAEAAADv/woAAQAAAAEAAADv/wsAAQAAAAEAAADv/wwAAQAAAAEAAADv/w0AAQAAAAEAAADv/w4AAQAAAAEAAADv/w8AAQAAAAEAAADv/xAAAQAAAAIAAAAYAAkAAQABAAEAAAAZAAkAAQABAAEAAAAaAAkAAQABAAEAAAAbAAkAAQABAAEAAAAcAAkAAQABAAEAAAAcAP3/AQACAAAAAAAcAP7/AQACAAEAAAAcAP//AQACAAEAAAAcAAAAAQACAAEAAAAcAAEAAQACAAEAAAAcAAIAAQACAAEAAAAcAAMAAQACAAEAAAAcAAQAAQACAAEAAAAcAAUAAQACAAEAAAAcAAYAAQACAAEAAAAcAAcAAQABAAEAAAAcAAgAAQABAAEAAAAcAAoAAQABAAEAAAAcAAsAAQABAAEAAAAcAAwAAQABAAEAAAAcAA0AAQACAAEAAAAcAA4AAQACAAEAAAAcABAAAQACAAIAAAAYABAAAQABAAIAAAAZABAAAQABAAIAAAAaABAAAQABAAIAAAAbABAAAQABAAIAAAAYAAgAAQABAAEAAAAZAAgAAQABAAEAAAAaAAgAAQABAAEAAAAbAAgAAQABAAEAAAAbAAcAAQABAAEAAAAbAAYAAQABAAEAAAAbAAUAAQABAAEAAAAbAAQAAQABAAEAAAAbAAMAAQABAAEAAAAbAP7/AQABAAEAAAAbAP//AQABAAEAAAAbAAAAAQABAAEAAAAbAAEAAQABAAEAAAAbAAIAAQABAAEAAAAZAAcAAQABAAEAAAAZAAYAAQABAAEAAAAZAAUAAQABAAEAAAAZAAQAAQABAAEAAAAZAAMAAQABAAEAAAAZAAIAAQABAAEAAAAZAAEAAQABAAEAAAAZAAAAAQABAAEAAAAZAP//AQABAAEAAAAaAP7/AQABAAEAAAAZAP3/AQABAAAAAAAaAP3/AQABAAAAAAAbAP3/AQABAAAAAAAbAAoAAQABAAEAAAAbAAsAAQABAAEAAAAbAAwAAQABAAEAAAAbAA0AAQABAAEAAAAbAA4AAQABAAEAAAAbAA8AAQABAAEAAAAdAP//AQACAAEAAAAUAAQAAQABAAEAAAATAAMAAQABAAEAAAAUAAMAAQABAAEAAAAdAP7/AQACAAEAAAAdAAAAAQACAAEAAAAdAAEAAQACAAEAAAAdAAIAAQACAAEAAAAdAAMAAQACAAEAAAAdAAQAAQACAAEAAAAdAAUAAQACAAEAAAAdAAYAAQACAAEAAAAdAAcAAQACAAEAAAAdAAgAAQACAAEAAAAdABAAAQACAAIAAAAdAA8AAQACAAEAAAAdAA4AAQACAAEAAAAdAA0AAQACAAEAAAAdAAwAAQACAAEAAAAdAAsAAQACAAEAAAAdAAoAAQACAAEAAAAdAAkAAQACAAEAAAAdAP3/AQACAAAAAADv//7/AQAAAAEAAADv//3/AQAAAAAAAADw//3/AQABAAAAAADx//3/AQABAAAAAADy//3/AQABAAAAAADz//3/AQABAAAAAAD0//3/AQABAAAAAAD1//3/AQABAAAAAAD2//3/AQABAAAAAAD3//3/AQABAAAAAAD4//3/AQABAAAAAAD5//3/AQABAAAAAAD6//3/AQABAAAAAAD7//3/AQABAAAAAAD8//3/AQABAAAAAAD9//3/AQABAAAAAAD+//3/AQABAAAAAAD///3/AQABAAAAAAAAAP3/AQABAAAAAAABAP3/AQABAAAAAAACAP3/AQABAAAAAAADAP3/AQABAAAAAAAEAP3/AQABAAAAAAAFAP3/AQABAAAAAAAGAP3/AQABAAAAAAAHAP3/AQABAAAAAAAIAP3/AQABAAAAAAAJAP3/AQABAAAAAAAKAP3/AQABAAAAAAALAP3/AQABAAAAAAAMAP3/AQABAAAAAAA=")
+tile_set = ExtResource("1_qp82b")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1064875179]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(-393, 620)
+zoom = Vector2(1.5, 1.5)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1804999449]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_b4pwy")
+
+[node name="OnTheGround" type="Node2D" parent="." unique_id=836096441]
+y_sort_enabled = true
+position = Vector2(-94, -86)
+
+[node name="Sprite2D" type="Sprite2D" parent="OnTheGround" unique_id=482500135]
+position = Vector2(94, 86)
+
+[node name="Arboles" type="Sprite2D" parent="OnTheGround/Sprite2D" unique_id=1617138282]
+
+[node name="arbol frutal" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles" unique_id=1753334125]
+
+[node name="arbol99" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1647031160]
+position = Vector2(698.95996, -211.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol96" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=502393291]
+position = Vector2(344.95996, -224.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol97" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=269955854]
+position = Vector2(458.95993, -220.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol98" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=751124652]
+position = Vector2(577.95996, -220.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol94" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=127940959]
+position = Vector2(-557.44006, -201.07993)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol14" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1289161364]
+position = Vector2(26, 259.99997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol20" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1774951703]
+position = Vector2(-136, -77.00003)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol93" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=52275603]
+position = Vector2(-406.04004, -211.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol23" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1558988828]
+position = Vector2(-399, -69)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol25" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1953945318]
+position = Vector2(-550.4, -59.03997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol92" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=31576451]
+position = Vector2(-143.04004, -219.04)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol95" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1756056377]
+position = Vector2(-264.04004, -217.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol108" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2107021667]
+position = Vector2(-40.04004, -211.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol26" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=206188931]
+position = Vector2(-549.4, 49.960022)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol24" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1478668122]
+position = Vector2(-257, -74.99999)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol39" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1097332801]
+position = Vector2(352, -82)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol43" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=946352379]
+position = Vector2(465.99997, -77.99999)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol44" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1297719324]
+position = Vector2(585, -78)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol45" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1593001624]
+position = Vector2(706, -69)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol100" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1813597404]
+position = Vector2(816.95984, -210.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol101" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1906302960]
+position = Vector2(927.95984, -206.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol102" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1021979766]
+position = Vector2(1047.9598, -209.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol103" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2062399261]
+position = Vector2(1165.96, -209.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol104" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=943722459]
+position = Vector2(1284.96, -208.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol105" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=160682817]
+position = Vector2(1406.96, -208.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol106" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1049998703]
+position = Vector2(1513.96, -214.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol107" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=969957621]
+position = Vector2(83.95995, -218.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol109" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1510597740]
+position = Vector2(208.95996, -217.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol110" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=416346435]
+position = Vector2(-694.44006, -189.07993)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol111" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1325730613]
+position = Vector2(-793.44006, -186.07993)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol112" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=395507730]
+position = Vector2(-900.04, -191.03996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol46" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=83964379]
+position = Vector2(823.9999, -68)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol47" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1322508781]
+position = Vector2(934.9999, -64)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol48" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=667144281]
+position = Vector2(1054.9999, -67)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol49" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=811234218]
+position = Vector2(1173, -67)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol50" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1610077956]
+position = Vector2(1292, -65.99999)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol51" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1664550555]
+position = Vector2(1414, -65.99999)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol52" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=346107261]
+position = Vector2(1521, -71.99999)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol40" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=957185967]
+position = Vector2(90.99999, -76)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol41" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1496255669]
+position = Vector2(-33, -69)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol42" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=785340319]
+position = Vector2(216, -75)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol18" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1146127122]
+position = Vector2(-389, 38)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol19" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1930755205]
+position = Vector2(-240.99997, 33)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol21" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=674453336]
+position = Vector2(-389, 156)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol27" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=880919467]
+position = Vector2(-547.4, 167.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol28" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=544368846]
+position = Vector2(-548.44, 295.92004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol22" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1211165051]
+position = Vector2(-222.0399, 142.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol17" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=280276607]
+position = Vector2(-376.03998, 270.96)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol15" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=791254127]
+position = Vector2(-228.0399, 259.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol16" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1842984544]
+position = Vector2(-104.03995, 266.96005)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol13" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1845196289]
+position = Vector2(-88.999954, 384.00003)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol3" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=248016381]
+position = Vector2(-111.40003, 468.59998)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol11" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1733337660]
+position = Vector2(-392, 380.99997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1287635384]
+position = Vector2(-41.400032, 340.6)
+scale = Vector2(1.0000001, 1.0000001)
+collision_priority = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D4" unique_id=865643782]
+position = Vector2(-148.92497, 485.8999)
+shape = SubResource("RectangleShape2D_wvj5c")
+
+[node name="arbol29" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1286004053]
+position = Vector2(-551.4, 398.96)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol12" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1169747791]
+position = Vector2(-232.99998, 364)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol5" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=463549574]
+position = Vector2(119.599976, 473.6)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol4" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2103750182]
+position = Vector2(2.5999756, 473.59998)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol2" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1651998819]
+position = Vector2(-221.40002, 466.6)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1333058943]
+position = Vector2(-373, 465.99997)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol30" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1601069967]
+position = Vector2(-533, 466.99997)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol31" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=203281671]
+z_index = 2
+position = Vector2(-554.39996, 600.96)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol32" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1021114894]
+z_index = 3
+position = Vector2(-555.39996, 710.95996)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol6" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1181873285]
+z_index = 3
+position = Vector2(-108.99999, 752.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol8" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=289231126]
+z_index = 3
+position = Vector2(5.9999995, 750.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol7" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=269095177]
+z_index = 3
+position = Vector2(138.99998, 753)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol33" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=848749755]
+z_index = 3
+position = Vector2(-572.39996, 839.95996)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol68" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=310162395]
+position = Vector2(-687.4, -47.03997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol69" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1103315624]
+position = Vector2(-686.4, 61.960022)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol70" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=681717461]
+position = Vector2(-684.4, 179.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol71" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=571069257]
+position = Vector2(-685.44, 307.92004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol72" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=92126920]
+position = Vector2(-684, 446)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol73" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=183023748]
+z_index = 2
+position = Vector2(-691.39996, 612.96)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol74" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1820767866]
+z_index = 3
+position = Vector2(-692.39996, 722.95996)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol75" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1902990407]
+z_index = 3
+position = Vector2(-699, 839.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol76" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1921624936]
+position = Vector2(-786.4, -44.03997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol77" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=8431422]
+position = Vector2(-785.4, 64.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol78" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=729273598]
+position = Vector2(-783.4, 182.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol79" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1883405104]
+position = Vector2(-784.44, 310.92004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol80" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1166061111]
+position = Vector2(-784.99994, 454.99997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol81" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=860427343]
+z_index = 2
+position = Vector2(-790.39996, 615.96)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol82" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1142169691]
+z_index = 3
+position = Vector2(-791.39996, 725.95996)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol83" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=798529140]
+z_index = 3
+position = Vector2(-811.99994, 842.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol84" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1696546496]
+position = Vector2(-892.99994, -48.999996)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol85" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1555951459]
+position = Vector2(-910.80005, 66.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol86" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=786508700]
+position = Vector2(-908.80005, 184.96002)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol87" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=666850633]
+position = Vector2(-909.84, 312.92004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol88" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1208422182]
+position = Vector2(-897.99994, 462.99997)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol89" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1439649485]
+z_index = 2
+position = Vector2(-915.8, 617.96)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol90" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=223693134]
+z_index = 3
+position = Vector2(-916.8, 727.95996)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol91" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=261434181]
+z_index = 3
+position = Vector2(-937.39996, 844.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol53" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=740691050]
+position = Vector2(1525.6001, 64.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol54" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2035172313]
+position = Vector2(1527.6001, 182.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol57" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=483404586]
+position = Vector2(1525, 287)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol113" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1818025201]
+position = Vector2(1624.5599, -206.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol114" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1195931734]
+position = Vector2(1631.6, -63.999992)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol115" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=30393127]
+position = Vector2(1636.2001, 72.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol116" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=12213754]
+position = Vector2(1638.2001, 190.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol117" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=775403093]
+position = Vector2(1635.6, 295)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol118" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1707781662]
+position = Vector2(1757.5599, -202.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol119" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1178591450]
+position = Vector2(1764.6, -59.999992)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol120" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1669312308]
+position = Vector2(1769.2001, 76.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol121" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1120707944]
+position = Vector2(1771.2001, 194.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol122" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=199355817]
+position = Vector2(1768.6, 299)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol129" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2021239175]
+position = Vector2(1879.5599, -206.03995)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol130" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1972423185]
+position = Vector2(1886.6, -63.999992)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol131" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=491729908]
+position = Vector2(1891.2001, 72.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol132" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=681334543]
+position = Vector2(1893.2001, 190.96004)
+scale = Vector2(3.1868756, 3.1868756)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol133" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1414733995]
+position = Vector2(1890.6, 295)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol58" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=194709181]
+z_index = 2
+position = Vector2(1520, 633)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol59" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1776434287]
+z_index = 3
+position = Vector2(1515, 739)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol60" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1092798307]
+z_index = 3
+position = Vector2(1512, 856.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol123" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1626393365]
+z_index = 2
+position = Vector2(1626.6, 632.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol124" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=436186933]
+z_index = 3
+position = Vector2(1621.6, 738.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol125" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=605129765]
+z_index = 3
+position = Vector2(1618.6, 856.6)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol126" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1492627915]
+z_index = 2
+position = Vector2(1749.6, 631.6)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol127" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=601296225]
+z_index = 3
+position = Vector2(1744.6, 737.6)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol128" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=741264633]
+z_index = 3
+position = Vector2(1741.6, 855.5999)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol134" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=988320767]
+z_index = 2
+position = Vector2(1873.6, 633.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol135" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1602494672]
+z_index = 3
+position = Vector2(1868.6, 739.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol136" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=764635190]
+z_index = 3
+position = Vector2(1865.6, 857.6)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol9" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=282497296]
+z_index = 3
+position = Vector2(-246.99998, 752.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol10" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1941699577]
+z_index = 3
+position = Vector2(-398.99997, 752)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol34" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1461405681]
+z_index = 3
+position = Vector2(-422.99997, 847.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol35" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=969634593]
+z_index = 3
+position = Vector2(-272.99994, 842.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol36" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=538963367]
+z_index = 3
+position = Vector2(-136, 845.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol37" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1670127898]
+z_index = 3
+position = Vector2(15.0000305, 854.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol38" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=960150561]
+z_index = 3
+position = Vector2(141.00002, 855.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol55" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=975755298]
+z_index = 3
+position = Vector2(274.60016, 866.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol56" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1296171256]
+z_index = 3
+position = Vector2(412.60013, 869.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol61" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=893349079]
+z_index = 3
+position = Vector2(562.60016, 864.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol62" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1429878811]
+z_index = 3
+position = Vector2(699.6001, 867.60004)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol63" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=410135480]
+z_index = 3
+position = Vector2(836.99994, 867.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol64" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1526126171]
+z_index = 3
+position = Vector2(968.9999, 869.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol65" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2016575555]
+z_index = 3
+position = Vector2(1094, 863.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol66" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=724833986]
+z_index = 3
+position = Vector2(1216.9999, 861.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="arbol67" type="Sprite2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=399466317]
+z_index = 3
+position = Vector2(1353, 862.99994)
+scale = Vector2(3.4, 3.4)
+texture = ExtResource("12_qp82b")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1257395267]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D3" unique_id=863615292]
+position = Vector2(412.5, -142)
+shape = SubResource("RectangleShape2D_b4pwy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2123835507]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D" unique_id=1468607342]
+position = Vector2(-309, 290)
+shape = SubResource("RectangleShape2D_qp82b")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=784624433]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D2" unique_id=147529774]
+position = Vector2(-752, 501)
+shape = SubResource("RectangleShape2D_w5i5h")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=2084328644]
+position = Vector2(5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D5" unique_id=2100852367]
+position = Vector2(-19.75, 367)
+shape = SubResource("RectangleShape2D_f3vbu")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=375483287]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D6" unique_id=2029492380]
+position = Vector2(911.75, 877.75)
+shape = SubResource("RectangleShape2D_4i2ia")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=1447075850]
+position = Vector2(141, 855.99994)
+scale = Vector2(3.4, 3.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D7" unique_id=344080588]
+position = Vector2(3.8235245, -113.5294)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_63juc")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=521846068]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D8" unique_id=1945809330]
+position = Vector2(1505.25, 650)
+shape = SubResource("RectangleShape2D_hsk4w")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal" unique_id=231033934]
+position = Vector2(1353, 862.99994)
+scale = Vector2(3.4, 3.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Sprite2D/Arboles/arbol frutal/StaticBody2D9" unique_id=2093144282]
+position = Vector2(82.647064, -189.85292)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_ksxws")
+
+[node name="NPCS" type="Sprite2D" parent="OnTheGround" unique_id=775691012]
+
+[node name="Doro Doro" type="Sprite2D" parent="OnTheGround/NPCS" unique_id=1813082668]
+position = Vector2(1319, 361)
+scale = Vector2(1.4960914, 1.4960914)
+texture = ExtResource("4_qp82b")
+
+[node name="TalkBehavior2" type="Node" parent="OnTheGround/NPCS/Doro Doro" unique_id=1779618365 node_paths=PackedStringArray("interact_area")]
+script = ExtResource("7_63juc")
+dialogue = ExtResource("6_eujs7")
+interact_area = NodePath("../InteractArea")
+metadata/_custom_type_script = "uid://edcifob4jc4s"
+
+[node name="InteractArea" type="Area2D" parent="OnTheGround/NPCS/Doro Doro" unique_id=1301358072]
+position = Vector2(1, 16)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("6_f3vbu")
+metadata/_custom_type_script = "uid://du8wfijr35r35"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/NPCS/Doro Doro/InteractArea" unique_id=1758040716]
+position = Vector2(0.0026245117, -14.663162)
+shape = SubResource("RectangleShape2D_0pa64")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OnTheGround/NPCS/Doro Doro" unique_id=1401566600]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/NPCS/Doro Doro/StaticBody2D" unique_id=765700273]
+position = Vector2(1.336792, 0.33418274)
+shape = SubResource("RectangleShape2D_eujs7")
+
+[node name="mensajero" type="Sprite2D" parent="OnTheGround/NPCS" unique_id=430852251]
+position = Vector2(445, 672)
+texture = ExtResource("5_eujs7")
+
+[node name="TalkBehavior" type="Node" parent="OnTheGround/NPCS/mensajero" unique_id=626314208 node_paths=PackedStringArray("interact_area")]
+script = ExtResource("7_63juc")
+interact_area = NodePath("../InteractArea")
+metadata/_custom_type_script = "uid://edcifob4jc4s"
+
+[node name="InteractArea" type="Area2D" parent="OnTheGround/NPCS/mensajero" unique_id=1684115726]
+position = Vector2(1, 16)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("6_f3vbu")
+metadata/_custom_type_script = "uid://du8wfijr35r35"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/NPCS/mensajero/InteractArea" unique_id=1801548163]
+position = Vector2(0.3093872, -3.3695068)
+shape = SubResource("RectangleShape2D_0pa64")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OnTheGround/NPCS/mensajero" unique_id=613838562]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/NPCS/mensajero/StaticBody2D" unique_id=1169250209]
+position = Vector2(1.142273, 10.96344)
+shape = SubResource("RectangleShape2D_eujs7")
+
+[node name="Player" parent="OnTheGround" unique_id=296354958 instance=ExtResource("8_4i2ia")]
+position = Vector2(-299, 706)
+safe_margin = 0.001
+sprite_frames = ExtResource("9_hsk4w")
+
+[node name="ScreenOverlay" type="CanvasLayer" parent="." unique_id=826076597]
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=979903205 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(-393, 620)
+script = ExtResource("11_5s136")
+follow_mode = 2
+follow_target = NodePath("../OnTheGround/Player")
+zoom = Vector2(1.5, 1.5)
+tween_resource = SubResource("Resource_wqh38")
