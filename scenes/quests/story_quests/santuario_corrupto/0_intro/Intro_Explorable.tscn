@@ -946,6 +946,7 @@ tween_resource = SubResource("Resource_wqh38")
 [node name="Area2D" type="Area2D" parent="." unique_id=913479513]
 position = Vector2(2367, 947)
 script = ExtResource("13_6h5vr")
+next_scene = "uid://bxxe7vnnxnaq0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2017799026]
 position = Vector2(-879.00006, -481.99997)

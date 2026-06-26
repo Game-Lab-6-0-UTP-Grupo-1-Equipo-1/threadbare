@@ -4,11 +4,28 @@
 [ext_resource type="TileSet" uid="uid://b282nrrbtkhvk" path="res://scenes/quests/story_quests/santuario_corrupto/tiles/santuario_corrupto_exterior_floors.tres" id="2_jydpw"]
 [ext_resource type="SpriteFrames" uid="uid://b8r8lq0r27m46" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/santuario_corrupto_player.tres" id="3_a1f2e"]
 [ext_resource type="Script" uid="uid://x1mxt6bmei2o" path="res://scenes/ui_elements/cinematic/cinematic.gd" id="4_4rlk8"]
+[ext_resource type="Texture2D" uid="uid://bi65vyd341ckk" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/doro doro final.png" id="4_8p0ef"]
 [ext_resource type="Resource" uid="uid://t14vb4qjsnnf" path="res://scenes/quests/story_quests/santuario_corrupto/4_outro/outro_components/santuario_corrupto_outro.dialogue" id="5_8p0ef"]
+[ext_resource type="Script" uid="uid://edcifob4jc4s" path="res://scenes/game_logic/talk_behavior.gd" id="5_45g7o"]
 [ext_resource type="Script" uid="uid://bdhjixygupit1" path="res://scenes/game_elements/props/area_filler/area_filler.gd" id="6_45g7o"]
+[ext_resource type="Resource" uid="uid://doqqo2upuhv4" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/doro doro dialogo final.dialogue" id="6_cduql"]
+[ext_resource type="Script" uid="uid://du8wfijr35r35" path="res://scenes/game_elements/props/interact_area/interact_area.gd" id="7_6vqnw"]
 [ext_resource type="PackedScene" uid="uid://7873qa54birk" path="res://scenes/game_elements/props/tree/tree.tscn" id="7_cduql"]
 [ext_resource type="SpriteFrames" uid="uid://2ek86nvw6y28" path="res://scenes/game_elements/props/tree/components/tree_spriteframes_yellow.tres" id="8_6vqnw"]
+[ext_resource type="Texture2D" uid="uid://7afi18x3x1dm" path="res://assets/third_party/tiny-swords/Deco/18.png" id="8_45g7o"]
 [ext_resource type="SpriteFrames" uid="uid://d36eq8tqdaxdy" path="res://scenes/game_elements/props/tree/components/tree_spriteframes_green.tres" id="9_miips"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miips"]
+size = Vector2(42.109695, 53.47265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw144"]
+size = Vector2(42.77813, 55.477905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cduql"]
+size = Vector2(42.109695, 53.47265)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vqnw"]
+size = Vector2(42.77813, 55.477905)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p421x"]
 size = Vector2(1205, 431)
@@ -45,6 +62,60 @@ position = Vector2(400, 349)
 sprite_frames = ExtResource("3_a1f2e")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="Doro Doro" type="Sprite2D" parent="OnTheGround" unique_id=1809461623]
+position = Vector2(563, 341)
+scale = Vector2(1.4960914, 1.4960914)
+texture = ExtResource("4_8p0ef")
+
+[node name="TalkBehavior2" type="Node" parent="OnTheGround/Doro Doro" unique_id=1412650691 node_paths=PackedStringArray("interact_area")]
+script = ExtResource("5_45g7o")
+dialogue = ExtResource("6_cduql")
+interact_area = NodePath("../InteractArea")
+metadata/_custom_type_script = "uid://edcifob4jc4s"
+
+[node name="InteractArea" type="Area2D" parent="OnTheGround/Doro Doro" unique_id=97225991]
+position = Vector2(1, 16)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("7_6vqnw")
+metadata/_custom_type_script = "uid://du8wfijr35r35"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Doro Doro/InteractArea" unique_id=940426587]
+position = Vector2(0.0026245117, -14.663162)
+shape = SubResource("RectangleShape2D_miips")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OnTheGround/Doro Doro" unique_id=1405035171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/Doro Doro/StaticBody2D" unique_id=752429448]
+position = Vector2(1.336792, 0.33418274)
+shape = SubResource("RectangleShape2D_aw144")
+
+[node name="mensajero" type="Sprite2D" parent="OnTheGround" unique_id=1937554117]
+position = Vector2(311, 308)
+texture = ExtResource("8_45g7o")
+
+[node name="TalkBehavior" type="Node" parent="OnTheGround/mensajero" unique_id=651767580 node_paths=PackedStringArray("interact_area")]
+script = ExtResource("5_45g7o")
+interact_area = NodePath("../InteractArea")
+metadata/_custom_type_script = "uid://edcifob4jc4s"
+
+[node name="InteractArea" type="Area2D" parent="OnTheGround/mensajero" unique_id=799880990]
+position = Vector2(1, 16)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("7_6vqnw")
+metadata/_custom_type_script = "uid://du8wfijr35r35"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/mensajero/InteractArea" unique_id=213374226]
+position = Vector2(0.3093872, -3.3695068)
+shape = SubResource("RectangleShape2D_cduql")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OnTheGround/mensajero" unique_id=1842872728]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnTheGround/mensajero/StaticBody2D" unique_id=587918727]
+position = Vector2(1.142273, 10.96344)
+shape = SubResource("RectangleShape2D_6vqnw")
 
 [node name="ScreenOverlay" type="CanvasLayer" parent="." unique_id=1305410749]
 

@@ -8,7 +8,6 @@
 [ext_resource type="SpriteFrames" uid="uid://b8r8lq0r27m46" path="res://scenes/quests/story_quests/santuario_corrupto/player_components/santuario_corrupto_player.tres" id="6_kptut"]
 [ext_resource type="Script" uid="uid://c68oh8dtr21ti" path="res://scenes/game_logic/sequence_puzzle.gd" id="7_mfecb"]
 [ext_resource type="PackedScene" uid="uid://b8sok264erfoc" path="res://scenes/game_elements/props/sequence_puzzle_object/sequence_puzzle_object.tscn" id="8_xu8tq"]
-[ext_resource type="SpriteFrames" uid="uid://8g72ua47b4ua" path="res://scenes/quests/story_quests/santuario_corrupto/3_sequence_puzzle/santuario_corrupto_object.tres" id="9_oup8b"]
 [ext_resource type="AudioStream" uid="uid://cg57q82pb243w" path="res://assets/third_party/nepalese_hand_bells/handBells-c4.ogg" id="10_qc0nm"]
 [ext_resource type="AudioStream" uid="uid://b83x8h0ob5mpq" path="res://assets/third_party/nepalese_hand_bells/handBells-d4.ogg" id="11_j6mot"]
 [ext_resource type="AudioStream" uid="uid://cmtiwg2cylmts" path="res://assets/third_party/nepalese_hand_bells/handBells-e4.ogg" id="12_smgxf"]
@@ -79,37 +78,37 @@ y_sort_enabled = true
 position = Vector2(326, 489)
 
 [node name="Blue" parent="OnTheGround/SequencePuzzle/Objects" unique_id=288264421 instance=ExtResource("8_xu8tq")]
-sprite_frames = ExtResource("9_oup8b")
+sprite_frames = ExtResource("17_8qyhf")
 sprite_modulate = Color(0, 0.4, 0.6, 1)
 audio_stream = ExtResource("10_qc0nm")
 
 [node name="Pink" parent="OnTheGround/SequencePuzzle/Objects" unique_id=947200111 instance=ExtResource("8_xu8tq")]
 position = Vector2(88, -10)
-sprite_frames = ExtResource("9_oup8b")
+sprite_frames = ExtResource("17_8qyhf")
 sprite_modulate = Color(0.89, 0.2937, 0.804817, 1)
 audio_stream = ExtResource("11_j6mot")
 
 [node name="Yellow" parent="OnTheGround/SequencePuzzle/Objects" unique_id=883789242 instance=ExtResource("8_xu8tq")]
 position = Vector2(176, -20)
-sprite_frames = ExtResource("9_oup8b")
+sprite_frames = ExtResource("17_8qyhf")
 sprite_modulate = Color(0.89, 0.804817, 0.2937, 1)
 audio_stream = ExtResource("12_smgxf")
 
 [node name="Green" parent="OnTheGround/SequencePuzzle/Objects" unique_id=472811334 instance=ExtResource("8_xu8tq")]
 position = Vector2(264, -30)
-sprite_frames = ExtResource("9_oup8b")
+sprite_frames = ExtResource("17_8qyhf")
 sprite_modulate = Color(0.188235, 0.717647, 0, 1)
 audio_stream = ExtResource("13_n6mym")
 
 [node name="Purple" parent="OnTheGround/SequencePuzzle/Objects" unique_id=699569316 instance=ExtResource("8_xu8tq")]
 position = Vector2(352, -40)
-sprite_frames = ExtResource("9_oup8b")
+sprite_frames = ExtResource("17_8qyhf")
 sprite_modulate = Color(0.464066, 0.2937, 0.89, 1)
 audio_stream = ExtResource("14_3ldq8")
 
 [node name="Red" parent="OnTheGround/SequencePuzzle/Objects" unique_id=141148153 instance=ExtResource("8_xu8tq")]
 position = Vector2(440, -50)
-sprite_frames = ExtResource("9_oup8b")
+sprite_frames = ExtResource("17_8qyhf")
 sprite_modulate = Color(0.89, 0.2937, 0.2937, 1)
 audio_stream = ExtResource("15_ujhk8")
 
