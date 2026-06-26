@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://doqqo2upuhv4"
+path="res://.godot/imported/doro doro dialogo final.dialogue-57510db4032eef290863c20e4fa3e9b6.tres"
+
+[deps]
+
+source_file="res://scenes/quests/story_quests/santuario_corrupto/player_components/doro doro dialogo final.dialogue"
+dest_files=["res://.godot/imported/doro doro dialogo final.dialogue-57510db4032eef290863c20e4fa3e9b6.tres"]
+
+[params]
+
+defaults=true
